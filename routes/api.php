@@ -15,7 +15,7 @@ use App\Http\Controllers\TimelineController;
 |
 */
 
-Route::get('/timeline/items', [TimelineController::class, 'list']);
-Route::post('/timeline/insert', [TimelineController::class, 'store']);
+Route::get('/timeline/{timelineId}/items', [TimelineController::class, 'list']);
+Route::post('/timeline/{timelineId}/insert', [TimelineController::class, 'store']);
 Route::patch('/timeline/update/{id}', [TimelineController::class, 'update']);
 Route::delete('/timeline/delete/{id}', [TimelineController::class, 'delete']);

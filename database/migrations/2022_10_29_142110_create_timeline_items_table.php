@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('timeline_items', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('timeline_id');
             $table->string('title');
             $table->string('description');
             $table->timestamp('date');

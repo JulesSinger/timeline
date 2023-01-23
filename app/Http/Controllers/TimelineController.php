@@ -14,9 +14,9 @@ class TimelineController extends Controller
      *
      * @return array
      */
-    public function list()
+    public function list($timelineId)
     {
-        return TimelineResource::collection(TimelineItem::orderBy('date', 'asc')->get());
+        return TimelineResource::collection(TimelineItem::where('timeline_id', $timelineId)->orderBy('date', 'asc')->get());
     }
 
     /**
@@ -25,7 +25,7 @@ class TimelineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($timelineId, Request $request)
     {
         $requestData = $request->all();
 
@@ -46,6 +46,7 @@ class TimelineController extends Controller
         $date = $request->input('date');
         
         $timeline_item = new TimelineItem();
+        $timeline_item->timeline_id = $timelineId;
         $timeline_item->title = $title;
         $timeline_item->description = $description;
         $timeline_item->date = $date;
@@ -84,6 +85,5 @@ class TimelineController extends Controller
         $timeline_item->delete();
 
         return response()->json(['message' => 'La catégorie à bien été supprimée']);
-
     }
 }

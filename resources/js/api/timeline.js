@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-export default function useTimeline(insert_form = null, update_form = null) {
+export default function useTimeline(insert_form = null, update_form = null, timeline_id) {
   const timeline_items = ref()
   const getTimelineItems = async () => {
-    let response = await axios.get(`/api/timeline/items`, 
+    let response = await axios.get(`/api/timeline/${timeline_id}/items`, 
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -43,7 +43,7 @@ export default function useTimeline(insert_form = null, update_form = null) {
   }
 
   const postTimelineItem = async (onSuccess = null) => {
-    await axios.post(`/api/timeline/insert`, insert_form)
+    await axios.post(`/api/timeline/${timeline_id}/insert`, insert_form)
     .then((response) => {
         if (onSuccess !== null) return onSuccess(response)
     })

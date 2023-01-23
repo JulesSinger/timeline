@@ -82,7 +82,9 @@
 <script setup>
 import { useTimeline } from '../api/timeline.js'
 import { reactive, ref, inject } from 'vue';
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const direction = screen.width < 500 ? 'vertical' : 'horizontal'
 
 const selected_item = ref(null)
@@ -91,6 +93,13 @@ const insert_form = reactive({
     description: '',
     date : null,
 })
+
+
+let timeline_id = route.params.id
+if(!timeline_id) {
+  timeline_id = 1
+}
+
 
 const update_form = reactive({
   title: '',
@@ -117,7 +126,7 @@ const displayUpdateForm = (item) => {
 }
 
 const toast = inject('toast')
-const { timeline_items, getTimelineItems, postTimelineItem, updateTimelineItem, deleteTimelineItem } = useTimeline(insert_form, update_form)
+const { timeline_items, getTimelineItems, postTimelineItem, updateTimelineItem, deleteTimelineItem } = useTimeline(insert_form, update_form, timeline_id)
 
 
 const call_post_timeline_item = () => {
