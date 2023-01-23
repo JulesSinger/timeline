@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat bold";
+  src: url("/fonts/Montserrat-SemiBold.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat italic";
+  src: url("/fonts/Montserrat-Italic.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat thin";
+  src: url("/fonts/Montserrat-Light.ttf") format("woff");
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--clr-primary);
+}
+
+* {
+  color: var(--clr-text);
+  font-family: var(--font-family);
+}
+
+p {
+  font-family: var(--font-thin);
+}
+
+h1 {
+  font-family: var(--font-bold);
+  font-size: 1.3rem;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.ml-3 {
+  margin-left: 3rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 5rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.block {
+  display: block;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  & {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  input, textarea {
+    background-color: var(--clr-primary);
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem;
+    color: var(--clr-text);
+    width: 98%;
+    resize: none;
+  }
+}
+
+.double-form-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.container {
+  background-color: var(--clr-secondary);
+  border-radius: 5px;
+  box-shadow: var(--shadow-main);
+}
+
+
+.btn {
+  border: none;
+  padding: 0.65rem;
+  border-radius: 5px;
+  color: var(--clr-primary)!important;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 10rem;
+}
+
+.btn-markup {
+  background-color: var(--clr-markup);
+}
+
+.btn-markup:hover {
+  background-color: var(--clr-bigmarkup);
+}
+
+.btn-red {
+  background-color: var(--clr-delete);
+  color: var(--clr-light);
+}
+
+.btn-red:hover {
+  background-color: var(--clr-bigdelete);
+  color: var(--clr-light);
+}
+
+.btn-light {
+  border : 1px solid var(--clr-markup);
+  color: var(--clr-markup);
+  background-color: var(--clr-secondary);
+}
+
+.btn-light:hover {
+  background-color: var(--clr-markup);
+  color: var(--clr-primary);
+}
+
+.btn-link {
+  background: none;
+  color: var(--clr-markup);
+  text-decoration: underline;
+  padding: 0;
+  width: auto;
+}
+
+@media all and (max-width: 500px) {
+.double-form-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+}
