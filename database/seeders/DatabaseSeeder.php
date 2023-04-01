@@ -31,6 +31,11 @@ class DatabaseSeeder extends Seeder
 
         TimelineItem::factory(20)->create();
         Todolist::factory(10)->create();
+        Todolist::factory(10)->create([
+            'user_id' => 11,
+            'name' => 'Todolist de Jules',
+            'description' => 'Todolist de Jules',
+        ]);
         Todo::factory(50)->create();
 
         

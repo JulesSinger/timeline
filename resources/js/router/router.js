@@ -18,7 +18,6 @@ router.beforeEach((to, from, next) => {
             next()
         }
     } else if(to.meta.middleware == "auth") {
-        console.log(store.state.auth.authenticated)
         if (store.state.auth.authenticated) {
             next()
         } else {

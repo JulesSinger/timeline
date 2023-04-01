@@ -1,12 +1,8 @@
-import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import axiosClient from '../axios'
 
-const user = ref(null);
 
 export function useLogin() {
-  const router = useRouter();
-
   const login = async (credentials, onSuccess = null) => {
     try {
       const response = await axiosClient.post('/api/login', credentials);

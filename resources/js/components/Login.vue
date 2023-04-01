@@ -32,7 +32,6 @@ const submit = async () => {
   await login(form.value, (response) => {
     store.dispatch('auth/login', response.data.data.token)
     store.dispatch('auth/authenticate')
-
     router.push({ name: 'Home' })
   });
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\TodolistResource;
 use App\Models\Todolist;
+use Illuminate\Support\Facades\Auth;
 
 class TodolistController extends Controller
 {
@@ -14,7 +15,9 @@ class TodolistController extends Controller
     }
 
     public function show_todolists() {
-        $todolists = Todolist::all();
+        Auth::user();
+        $user_id = Auth::id();
+        $todolists = Todolist::where('user_id', $user_id)->get();
         return TodolistResource::collection($todolists);
     }
 
