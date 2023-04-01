@@ -1,10 +1,10 @@
 import { ref } from 'vue'
-import axios from 'axios'
+import axiosClient from '../axios'
 
-export default function useTimeline(insert_form = null, update_form = null, timeline_id) {
+export default function useTimeline(insert_form = null, update_form = null) {
   const timeline_items = ref()
   const getTimelineItems = async () => {
-    let response = await axios.get(`/api/timeline/${timeline_id}/items`, 
+    let response = await axiosClient.get(`/api/timeline/items`, 
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -43,7 +43,7 @@ export default function useTimeline(insert_form = null, update_form = null, time
   }
 
   const postTimelineItem = async (onSuccess = null) => {
-    await axios.post(`/api/timeline/${timeline_id}/insert`, insert_form)
+    await axiosClient.post(`/api/timeline/insert`, insert_form)
     .then((response) => {
         if (onSuccess !== null) return onSuccess(response)
     })
@@ -53,7 +53,7 @@ export default function useTimeline(insert_form = null, update_form = null, time
   }
 
   const updateTimelineItem = async (itemId, onSuccess = null) => {
-    await axios.patch(`/api/timeline/update/${itemId}`, update_form)
+    await axiosClient.patch(`/api/timeline/update/${itemId}`, update_form)
     .then(response => {
       if(onSuccess !== null) return onSuccess(response)
         
@@ -64,7 +64,7 @@ export default function useTimeline(insert_form = null, update_form = null, time
   }
 
   const deleteTimelineItem = async (itemId,onSuccess = null) => {
-    await axios.delete(`/api/timeline/delete/${itemId}`)
+    await axiosClient.delete(`/api/timeline/delete/${itemId}`)
     .then(response => {
         if(onSuccess !== null) return onSuccess(response)
     })

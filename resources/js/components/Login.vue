@@ -15,6 +15,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useLogin } from '../api/auth';
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const form = ref({
   email: '',
@@ -24,7 +27,9 @@ const form = ref({
 const { login } = useLogin();
 
 const submit = async () => {
-  await login(form.value);
+  await login(form.value, (response) => {
+    store.dispatch('auth/login', response.data.data.token)
+  });
 };
 
 </script>

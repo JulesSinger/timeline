@@ -1,17 +1,19 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
+import axiosClient from '../axios'
 
 const user = ref(null);
 
 export function useLogin() {
   const router = useRouter();
 
-  const login = async (credentials) => {
+  const login = async (credentials, onSuccess = null) => {
     try {
-      const response = await axios.post('/api/login', credentials);
+      const response = await axiosClient.post('/api/login', credentials);
 
+      
       if (response.status === 200) {
+        onSuccess(response)
         await router.push('/');
       }
     } catch (error) {
@@ -27,7 +29,7 @@ export function useRegister() {
 
   const register = async (credentials) => {
     try {
-      const response = await axios.post('/api/register', credentials);
+      const response = await axiosClient.post('/api/register', credentials);
 
       if (response.status === 200) {
         await router.push('/');
@@ -45,7 +47,7 @@ export function useLogout() {
 
   const logout = async () => {
     try {
-      const response = await axios.post('/api/logout');
+      const response = await axiosClient.post('/api/logout');
 
       if (response.status === 200) {
         await router.push('/login');
@@ -56,26 +58,4 @@ export function useLogout() {
   };
 
   return { logout };
-}
-
-export function useUser() {
-  const fetchUser = async () => {
-    try {
-      const response = await axios.get('/api/user');
-
-      if (response.status === 200) {
-        user.value = response.data;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // Appeler fetchUser() lorsqu'un composant qui utilise useUser() est monté
-  fetchUser();
-
-  // Renvoyer une propriété calculée qui indique si l'utilisateur est connecté
-  const isLoggedIn = computed(() => !!user.value);
-
-  return { user, isLoggedIn };
 }
