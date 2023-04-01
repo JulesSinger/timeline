@@ -24,4 +24,7 @@ Route::delete('/timeline/delete/{id}', [TimelineController::class, 'delete']);
 Route::get('/mean/{id}', [MeanController::class, 'list_course_units']);
 
 Route::get('/todolist/{id}', [TodolistController::class, 'show_todolist']);
+Route::get('/todolists', [TodolistController::class, 'show_todolists']);
+Route::delete('/todolist/{todolist_id}', [TodolistController::class, 'delete']);
 Route::get('/todolist/{id}/todos', [TodoController::class, 'list_todos']);
+Route::delete('/todolist/{todolist_id}/todos/{todo_id}', [TodoController::class, 'delete']);

@@ -1,7 +1,7 @@
 import TimeLine from '../components/TimeLine.vue'
 import MeanCalculator from '../components/MeanCalculator.vue'
 import Todolist from '../components/Todolist.vue'
-
+import Todolists from '../components/Todolists.vue'
 export const routes = [
   {
     path: '/:id?',
@@ -17,6 +17,14 @@ export const routes = [
     component: MeanCalculator,
     meta: { 
       title: 'MeanCalculator' ,
+    }
+  },
+  {
+    path: '/todolists',
+    name: 'Todolists',
+    component: Todolists,
+    meta: {
+      title: 'Todolists',
     }
   },
   {
