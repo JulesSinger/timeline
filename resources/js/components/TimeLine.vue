@@ -66,15 +66,12 @@
               <label for="description">Description :</label>
               <input placeholder="description de l'item" type="text" name="description" id="description" v-model="update_form.description">
           </div>
-
           <div class="flex-center">
             <button type="submit" class="btn btn-markup mt-5 mr-2">Appliquer la modification</button>
             <div v-if="direction=='vertical'" @click="closeUpdateForm()" class="btn btn-red mt-5" style="width: 2rem;">X</div>
           </div>
         </form>
       </div>
-
- 
     </div>
     </div>
 </template>
@@ -99,7 +96,6 @@ let timeline_id = route.params.id
 if(!timeline_id) {
   timeline_id = 1
 }
-
 
 const update_form = reactive({
   title: '',

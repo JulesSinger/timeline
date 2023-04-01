@@ -1,0 +1,29 @@
+#todolist-page {
+  & {
+    margin-top: 2rem;
+  }
+
+  #todos-container {
+    & {
+      border: 1px solid var(--clr-text);
+      padding: 2rem;
+    }
+
+    .todo {
+      & {
+        margin: 1rem 0;
+        display: flex;
+        background-color: aliceblue;
+      }
+
+      .todo-actions {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-left: 0.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
