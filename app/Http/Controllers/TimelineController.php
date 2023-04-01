@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\TimelineResource;
 use App\Models\TimelineItem;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class TimelineController extends Controller
 {
@@ -14,9 +15,11 @@ class TimelineController extends Controller
      *
      * @return array
      */
-    public function list($timelineId)
+    public function list(Request $request)
     {
-        return TimelineResource::collection(TimelineItem::where('timeline_id', $timelineId)->orderBy('date', 'asc')->get());
+        $user = Auth::user();
+        $user_id = $user->id;
+        return TimelineResource::collection(TimelineItem::where('user_id', $user_id)->orderBy('date', 'asc')->get());
     }
 
     /**
@@ -25,8 +28,10 @@ class TimelineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($timelineId, Request $request)
+    public function store(Request $request)
     {
+        $user = $request->user();
+        $user_id = $user->id;
         $requestData = $request->all();
 
         $validator = Validator::make($requestData,[
@@ -46,7 +51,7 @@ class TimelineController extends Controller
         $date = $request->input('date');
         
         $timeline_item = new TimelineItem();
-        $timeline_item->timeline_id = $timelineId;
+        $timeline_item->user_id = $user_id;
         $timeline_item->title = $title;
         $timeline_item->description = $description;
         $timeline_item->date = $date;

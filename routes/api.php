@@ -20,15 +20,13 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-  Route::post('/login', [AuthController::class, 'store']);
-  Route::post('/logout', [AuthController::class, 'destroy']);
-  Route::get('/user', [AuthController::class, 'getCurrentUser']);
-  Route::post('/register', [RegisterController::class, 'create']);
-});
+Route::post('/login', [AuthController::class, 'store']);
+Route::post('/logout', [AuthController::class, 'destroy']);
+Route::get('/user', [AuthController::class, 'getCurrentUser']);
+Route::post('/register', [AuthController::class, 'create']);
 
-Route::get('/timeline/{timelineId}/items', [TimelineController::class, 'list']);
-Route::post('/timeline/{timelineId}/insert', [TimelineController::class, 'store']);
+Route::get('/timeline/items', [TimelineController::class, 'list']);
+Route::post('/timeline/insert', [TimelineController::class, 'store']);
 Route::patch('/timeline/update/{id}', [TimelineController::class, 'update']);
 Route::delete('/timeline/delete/{id}', [TimelineController::class, 'delete']);
 Route::get('/mean/{id}', [MeanController::class, 'list_course_units']);
