@@ -2,7 +2,7 @@
   <div id="home-page">
     <h1>Student Helper !</h1>
     <p>Student Helper est une application web qui permet aux étudiants de gérer leurs tâches quotidiennes, programmer les deadlines importantes, ou encore calculer leur moyenne</p>
-
+    <button @click="submit_logout()">logout</button>
     <div id="home-nav">
       <router-link to="/todolists">Mes TodoLists</router-link>
       <router-link to="/timeline">Ma timeline</router-link>
@@ -12,18 +12,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useLogin } from '../api/auth';
+import { useLogout } from '../api/auth';
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
-const form = ref({
-  email: '',
-  password: '',
-});
 
-const { login } = useLogin();
+const store = useStore()
+const router = useRouter()
 
-const submit = async () => {
-  await login(form.value);
+const { logout } = useLogout();
+
+const submit_logout = async () => {
+  await logout(() => store.dispatch('auth/logout_store'));
+  router.push({ name: 'Home' })
 };
-
 </script>

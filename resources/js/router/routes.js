@@ -13,6 +13,7 @@ export const routes = [
     component: Login,
     meta: {
       title: 'Login',
+      middleware: "guest"
     }
   },
   {
@@ -21,6 +22,7 @@ export const routes = [
     component: Register,
     meta: {
       title: 'Register',
+      middleware: "guest"
     }
   },
   {
@@ -29,22 +31,25 @@ export const routes = [
     component: Home,
     meta: {
       title: 'Home',
+      middleware: "auth"
     }
   },
   {
-    path: '/timeline/:id?',
+    path: '/timeline',
     name: 'TimeLine',
     component: TimeLine,
     meta: { 
-      title: 'TimeLine' ,
+      title: 'TimeLine',
+      middleware: "auth"
     }
   },
   {
-    path: '/mean/:id?',
+    path: '/mean',
     name: 'Calculateur de moyenne',
     component: MeanCalculator,
     meta: { 
-      title: 'MeanCalculator' ,
+      title: 'MeanCalculator',
+      middleware: "auth"
     }
   },
   {
@@ -53,6 +58,7 @@ export const routes = [
     component: Todolists,
     meta: {
       title: 'Todolists',
+      middleware: "auth"
     }
   },
   {
@@ -61,6 +67,7 @@ export const routes = [
     component: Todolist,
     meta: {
       title: 'Todolist',
+      middleware: "auth"
     }
   }
 ]

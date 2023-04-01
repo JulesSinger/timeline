@@ -50,6 +50,10 @@ export default {
             })
         },
 
+        authenticate({commit}, payload){
+            commit('SET_AUTHENTICATED', true)
+        },
+
         logout_store({ commit }){
             commit('SET_USER',{})
             commit('SET_AUTHENTICATED',false)

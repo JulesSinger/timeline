@@ -14,7 +14,6 @@ export function useLogin() {
       
       if (response.status === 200) {
         onSuccess(response)
-        await router.push('/');
       }
     } catch (error) {
       console.log(error)
@@ -45,11 +44,12 @@ export function useRegister() {
 export function useLogout() {
   const router = useRouter();
 
-  const logout = async () => {
+  const logout = async (onSuccess) => {
     try {
       const response = await axiosClient.post('/api/logout');
 
       if (response.status === 200) {
+        onSuccess(response)
         await router.push('/login');
       }
     } catch (error) {

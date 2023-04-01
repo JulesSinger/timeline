@@ -16,8 +16,10 @@
 import { ref } from 'vue';
 import { useLogin } from '../api/auth';
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 const store = useStore()
+const router = useRouter()
 
 const form = ref({
   email: '',
@@ -29,6 +31,9 @@ const { login } = useLogin();
 const submit = async () => {
   await login(form.value, (response) => {
     store.dispatch('auth/login', response.data.data.token)
+    store.dispatch('auth/authenticate')
+
+    router.push({ name: 'Home' })
   });
 };
 
