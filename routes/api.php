@@ -6,6 +6,9 @@ use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\MeanController;
 use App\Http\Controllers\TodolistController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,6 +19,13 @@ use App\Http\Controllers\TodoController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group(['middleware' => ['web']], function () {
+  Route::post('/login', [AuthController::class, 'store']);
+  Route::post('/logout', [AuthController::class, 'destroy']);
+  Route::get('/user', [AuthController::class, 'getCurrentUser']);
+  Route::post('/register', [RegisterController::class, 'create']);
+});
 
 Route::get('/timeline/{timelineId}/items', [TimelineController::class, 'list']);
 Route::post('/timeline/{timelineId}/insert', [TimelineController::class, 'store']);
