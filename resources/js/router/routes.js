@@ -4,6 +4,7 @@ import Todolist from '../components/Todolist.vue'
 import Todolists from '../components/Todolists.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
+import Home from '../components/Home.vue'
 
 export const routes = [
   {
@@ -23,7 +24,15 @@ export const routes = [
     }
   },
   {
-    path: '/:id?',
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: 'Home',
+    }
+  },
+  {
+    path: '/timeline/:id?',
     name: 'TimeLine',
     component: TimeLine,
     meta: { 
