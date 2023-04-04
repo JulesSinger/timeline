@@ -30,7 +30,12 @@ export default function useTodolist(todolist_id) {
   }
 
   const postTodo = async (form) => {
-    let response = await axiosClient.post(`/api/todolists/${todolist_id}/insert`, form)
+    let response = await axiosClient.post(`/api/todolists/${todolist_id}/todos/insert`, form)
+    todolist.value = response.data.todolist
+  }
+
+  const switchTodo = async (todo_id) => {
+    let response = await axiosClient.post(`/api/todolists/${todolist_id}/todos/${todo_id}/switch`)
     todolist.value = response.data.todolist
   }
 
@@ -42,7 +47,8 @@ export default function useTodolist(todolist_id) {
     deleteTodo,
     deleteTodolist,
     postTodolist,
-    postTodo
+    postTodo,
+    switchTodo,
   }
 }
 

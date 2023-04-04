@@ -51,10 +51,22 @@ class TodoController extends Controller
         $todo->deadline = $request->deadline;
         $todo->done = false;
         $todo->save();
-        
+
         return response()->json(
             [
                 'message' => 'Tâche ajoutée avec succès.',
+                'todolist' => new TodolistResource(Todolist::find($todolist_id))
+            ], 200
+        );
+    }
+
+    public function switch($todolist_id, $todo_id) {
+        $todo = Todo::find($todo_id);
+        $todo->done = !$todo->done;
+        $todo->save();
+        return response()->json(
+            [
+                'message' => 'Tâche modifiée avec succès.',
                 'todolist' => new TodolistResource(Todolist::find($todolist_id))
             ], 200
         );

@@ -4,6 +4,7 @@
     <h2 class="text-center">{{ todolist.name }}</h2>
     <div id="todos-container">
       <div v-for="todo in todolist.todos" :key="todo.id" class="todo">
+        <input type="checkbox" @click="callSwitchTodo(todo.id)" :checked="todo.done" >
         <div class="todo-title">
           <h3>{{ todo.title }}</h3>
         </div>
@@ -56,7 +57,7 @@ const insert_form = reactive({
   priority: 0,
   deadline: '',
 })
-const { todolist, getTodolist, deleteTodo, postTodo } = useTodolist(todolist_id)
+const { todolist, getTodolist, deleteTodo, postTodo, switchTodo } = useTodolist(todolist_id)
 
 const callDeleteTodo = (id) => {
   deleteTodo(id)
@@ -64,6 +65,10 @@ const callDeleteTodo = (id) => {
 
 const callPostTodo = () => {
   postTodo(insert_form)
+}
+
+const callSwitchTodo = (id) => {
+  switchTodo(id)
 }
 getTodolist()
 
