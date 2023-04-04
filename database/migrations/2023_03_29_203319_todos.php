@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('todolist_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('todolist_id')->references('id')->on('todolists')->onDelete('cascade');
+            $table->string('title');
             $table->integer('priority'); 
             $table->string('description');
             $table->date('deadline');

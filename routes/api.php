@@ -6,8 +6,8 @@ use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\MeanController;
 use App\Http\Controllers\TodolistController;
 use App\Http\Controllers\TodoController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Models\Todolist;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +34,7 @@ Route::get('/mean/{id}', [MeanController::class, 'list_course_units']);
 Route::get('/todolist/{id}', [TodolistController::class, 'show_todolist']);
 Route::get('/todolists', [TodolistController::class, 'show_todolists']);
 Route::delete('/todolist/{todolist_id}', [TodolistController::class, 'delete']);
+Route::post('/todolist/insert', [TodolistController::class, 'create']);
 Route::get('/todolist/{id}/todos', [TodoController::class, 'list_todos']);
 Route::delete('/todolist/{todolist_id}/todos/{todo_id}', [TodoController::class, 'delete']);
+Route::post('/todolists/{todolist_id}/insert', [TodoController::class, 'create']);

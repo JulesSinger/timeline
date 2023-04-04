@@ -21,6 +21,7 @@ class TodoFactory extends Factory
     public function definition()
     {
         return [
+            'title' => $this->faker->sentence(),
             'user_id' => $this->faker->randomDigitNot(0),
             'todolist_id' => $this->faker->randomDigitNot(0),
             'priority' => $this->faker->randomDigitNot(0),

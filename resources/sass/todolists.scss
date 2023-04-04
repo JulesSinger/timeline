@@ -1,0 +1,61 @@
+#todolists-page {
+  & {
+    margin-top: 2rem;
+  }
+
+  #todolists-container {
+    & {
+      width: 100vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:center;
+      gap: 3rem;
+    }
+
+    .todolist {
+      & {
+        width: 20vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        box-shadow: var(--shadow-main);
+        text-align: center;
+        transition: all 0.3s;
+        padding: 1rem;
+      }
+
+
+
+
+      .todolist-title {
+        & {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-right: 1rem;
+        }
+      }
+
+      .todolist-actions {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+          cursor: pointer;
+          position: relative;
+        }
+      }
+    }
+
+    #create-todolist {
+      & {
+        border: 4px solid black;
+      }
+
+      #inputs {
+        & {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

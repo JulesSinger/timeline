@@ -7,6 +7,8 @@ use App\Models\Todolist;
 use Illuminate\Http\Request;
 use App\Http\Resources\TodoResource;
 use App\Http\Resources\TodolistResource;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -20,6 +22,39 @@ class TodoController extends Controller
         return response()->json(
             [
                 'message' => 'Tâche supprimée avec succès.',
+                'todolist' => new TodolistResource(Todolist::find($todolist_id))
+            ], 200
+        );
+    }
+
+    public function create($todolist_id, Request $request) {
+        $requestData = $request->all();
+
+        $validator = Validator::make($requestData,[
+            'title' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $user = Auth::user();
+        $user_id = $user->id;
+        $todo = new Todo();
+        $todo->user_id = $user_id;
+        $todo->todolist_id = $todolist_id;
+        $todo->title = $request->title;
+        $todo->priority = $request->priority;
+        $todo->description = $request->description;
+        $todo->deadline = $request->deadline;
+        $todo->done = false;
+        $todo->save();
+        
+        return response()->json(
+            [
+                'message' => 'Tâche ajoutée avec succès.',
                 'todolist' => new TodolistResource(Todolist::find($todolist_id))
             ], 200
         );
