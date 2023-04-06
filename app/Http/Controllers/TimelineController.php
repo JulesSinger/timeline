@@ -30,7 +30,7 @@ class TimelineController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->user();
+        $user = Auth::user();
         $user_id = $user->id;
         $requestData = $request->all();
 
