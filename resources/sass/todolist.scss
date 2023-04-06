@@ -32,11 +32,6 @@
         justify-content: space-between;
       }
 
-      .todo-priority {
-        & {
-        }
-      }
-
       .weak {
         h3 {
           color: green!important;
@@ -89,7 +84,7 @@
       bottom: 0;
       z-index: 1000;
       padding: 0.5rem;
-      background-color: aliceblue;
+      background-color: var(--clr-secondary);
       transition: transform 0.5s;
       width: 100vw;
       height: 95vh;

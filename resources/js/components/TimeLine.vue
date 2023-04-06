@@ -79,7 +79,6 @@
 <script setup>
 import { useTimeline } from '../api/timeline.js'
 import { reactive, ref, inject } from 'vue';
-import { useRoute } from 'vue-router'
 
 const direction = screen.width < 500 ? 'vertical' : 'horizontal'
 
@@ -107,7 +106,7 @@ const displayUpdateForm = (item) => {
     if (direction == 'vertical') {
       const timeline_update = document.getElementById('timeline-update')
       const timeline = document.getElementById('timeline')
-      timeline.classList.add('black-filter')
+      timeline.classList.add('black-filter-timeline')
       timeline_update.classList.toggle('active')
     }
   }, 100)
@@ -144,7 +143,7 @@ const displayCreateForm = () => {
   timeline_create.classList.toggle('active')
   if (direction == 'vertical') {
     const timeline = document.getElementById('timeline')
-    timeline.classList.add('black-filter')
+    timeline.classList.add('black-filter-timeline')
   }
 }
 
@@ -153,7 +152,7 @@ const closeCreateForm = () => {
   timeline_create.classList.toggle('active')
   if (direction == 'vertical') {
     const timeline = document.getElementById('timeline')
-    timeline.classList.remove('black-filter')
+    timeline.classList.remove('black-filter-timeline')
   }
 }
 
@@ -162,7 +161,7 @@ const closeUpdateForm = () => {
   timeline_update.classList.toggle('active')
   if (direction == 'vertical') {
     const timeline = document.getElementById('timeline')
-    timeline.classList.remove('black-filter')
+    timeline.classList.remove('black-filter-timeline')
   }
 }
 

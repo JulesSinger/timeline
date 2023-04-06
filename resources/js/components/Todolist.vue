@@ -1,7 +1,7 @@
 <template>
   <div id="todolist-page" v-if="todolist">
     <div id="header" class="mt-1" @click="closeCreateForm()">
-      <router-link :to="{name: 'Home'}" class="router">
+      <router-link :to="{name: 'Todolists'}" class="router">
         <img src="/images/left_direction.svg"  alt="back" class="icon"/>
       </router-link>
       <h2 class="text-center">{{ todolist.name }}</h2>
@@ -89,7 +89,6 @@
       </div>
       <button class="btn btn-markup" @click="callPostTodo()">AJOUTER</button>
     </div>
-
   </div>
 </template>
 
