@@ -31,14 +31,12 @@
           <div class="todolist-actions">
             <router-link :to="{name: 'Todolist', params: { id: todolist.id }}" class="router">
                 <img src="/images/eye.png"  alt="delete" class="icon"/>
-              </router-link>
+            </router-link>
             <img src="/images/edit.png" @click="editTodolist(todolist)" />
             <img src="/images/delete.svg"  @click="callDeleteTodolist(todolist.id)" alt="delete" class="icon"/>
           </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -63,6 +61,8 @@ const callPostTodolist = () => {
 const editTodolist = (todolist) => {
   console.log(todolist.id)
 }
+
+
 
 getTodolists()
 

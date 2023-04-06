@@ -1,29 +1,211 @@
 #todolist-page {
   & {
-    margin-top: 2rem;
+    padding: 0.5rem;
+  }
+
+  #header {
+    & {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    a {
+      & {
+        width: 1.25rem;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
   #todos-container {
     & {
-      border: 1px solid var(--clr-text);
-      padding: 2rem;
+      margin-top: 1rem;
     }
-
+    
     .todo {
       & {
-        margin: 1rem 0;
+        padding: 0.25rem;
         display: flex;
-        background-color: aliceblue;
+        justify-content: space-between;
       }
 
-      .todo-actions {
-        img {
-          width: 1.5rem;
-          height: 1.5rem;
-          margin-left: 0.5rem;
-          cursor: pointer;
+      .todo-priority {
+        & {
+        }
+      }
+
+      .weak {
+        h3 {
+          color: green!important;
+        }
+      }
+
+      .normal {
+        h3 {
+          color: orange!important;
+        }
+      }
+
+      .strong {
+        h3 {
+          color: #FF0000!important;
+        }
+      }
+
+      .checkbox {
+        & {
+          margin-right: 0.5rem;
         }
       }
     }
+
+    .todos-done {
+      & {
+        margin-top: 2rem;
+        opacity: 0.5;
+      }
+      
+      .done {
+        text-decoration: line-through;
+      }
+    }
+
+    #add-task-button {
+      & {
+        margin-top: 0.5rem;
+        display: flex;
+        cursor:pointer;
+        bottom: 1rem;
+      }
+    }
+  }
+
+  #create-todo {
+    & {
+      position: fixed;
+      bottom: 0;
+      z-index: 1000;
+      padding: 0.5rem;
+      background-color: aliceblue;
+      transition: transform 0.5s;
+      width: 100vw;
+      height: 95vh;
+      padding-top: 0;
+
+    }
+
+    #close {
+      & {
+        display: flex;
+        justify-content: center;
+      }
+
+      div {
+
+        & {
+          padding-top: 0.5rem;
+          width: 20%;
+        }
+
+        img {
+          display: block;
+          margin: auto;
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+    }
+
+    input {
+      & {
+        width: 100%;
+        padding: 0.5rem;
+        border-bottom: 1px solid black;
+        border-radius: 5px;
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+    }
+
+    #priority {
+      & {
+        display: flex;
+        padding: 0.5rem;
+
+      }
+
+      p {
+        opacity: 0.5;
+        margin-right: 1rem;
+      }
+
+      #choices {
+        & {
+          display: flex;
+          justify-content: space-evenly;
+          width: 100%;
+          border-radius: 5px;
+          border-bottom: 1px solid black;
+          margin-bottom: 1rem;
+        }
+
+        .choice {
+          & {
+            display: flex;
+            align-items: center;
+          }
+          
+          label {
+              margin: 0 0.5rem;
+          }
+  
+          input {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    #date {
+      & {
+        display: flex;
+        padding: 0.5rem;
+
+      }
+      
+      p {
+        opacity: 0.5;
+      }
+
+      input {
+        margin-left: 1rem;
+        border-radius: 5px;
+        border-bottom: 1px solid black;
+        margin-bottom: 1rem;
+        margin-bottom: 0;
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    button {
+      & {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 5px;
+        color: black!important;
+        margin-bottom: 1rem;
+        font-family: var(--font-bold);
+      }
+    }
+  }
+}
+
+.create-mode {
+  & {
+    padding: 0!important;
   }
 }

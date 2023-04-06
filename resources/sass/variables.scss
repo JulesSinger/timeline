@@ -2,7 +2,7 @@ html {
   --clr-primary: #F4F4F4; 
   --clr-secondary: #FFFFFF; 
   --clr-light: #F4F4F4;
-  --clr-markup: #0067B8; 
+  --clr-markup: #FFC60A; 
   --clr-bigmarkup: #00518F;
   --clr-text: #000000;
   --clr-contrast: #FFF;
@@ -10,10 +10,9 @@ html {
   --clr-bigdelete: #c22734;
   --clr-littlemarkup: #636363 ;
 
-  --font-family: "Montserrat";
-  --font-bold: "Montserrat bold";
-  --font-thin: "Montserrat thin";
+  --font-family: "Graphik";
+  --font-bold: "Graphik bold";
 
-  --shadow-main: 5px 5px 10px 0 rgba(0, 0, 0, 0.15),
-                  5px 5px 10px 0 rgba(255, 255, 255, 0.2);
+  --shadow-main: 5px 5px 10px 0 rgba(0, 0, 0, 0.35),
+                  5px 5px 10px 0 rgba(0, 0, 0, 0.1);
 }
