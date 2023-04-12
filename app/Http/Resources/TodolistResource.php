@@ -19,6 +19,7 @@ class TodolistResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'name' => $this->name,
+            'color' => $this->color,
             'description' => $this->description,
             'todos' => TodoResource::collection($this->todos),
             'created_at' => $this->created_at,

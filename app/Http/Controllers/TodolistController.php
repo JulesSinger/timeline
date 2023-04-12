@@ -50,6 +50,8 @@ class TodolistController extends Controller
             ], 422);
         }
 
+        $color = $request->color ? $request->color : '#000000';
+
         Auth::user();
         $user_id = Auth::id();
 
@@ -57,6 +59,7 @@ class TodolistController extends Controller
         $todolist->name = $request->name;
         $todolist->user_id = $user_id;
         $todolist->description = $request->description;
+        $todolist->color = $color;
         $todolist->save();
 
         return response()->json(

@@ -24,6 +24,7 @@ class TodolistFactory extends Factory
         return [
             'name' => $this->faker->unique()->word(),
             'description' => $this->faker->sentence(),
+            'color' => $this->faker->hexColor(),
             'user_id' => $this->faker->randomDigitNot(0),
         ];
     }

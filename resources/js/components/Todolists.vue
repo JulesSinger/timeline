@@ -20,7 +20,7 @@
           <button class="btn btn-markup" @click="callPostTodolist()">Créer</button>
         </div>
       </div>
-      <div v-for="todolist in todolists" :key="todolist.id" class="todolist">
+      <div v-for="todolist in todolists" :key="todolist.id" class="todolist" :style="{ backgroundColor: todolist.color}">
           <div class="todolist-title ">
             <h3 class="text-center">{{ todolist.name }}</h3>
           </div>
@@ -54,6 +54,10 @@
         <div class="input-container">
           <input type="text" id="description" v-model="insert_form.description" placeholder="description de la todolist"/>
         </div>
+
+        <div class="input-container">
+          <input type="text" id="color" v-model="insert_form.color" placeholder="Couleur"/>
+        </div>
       </div>
 
       <button class="btn btn-markup" @click="callPostTodolist()">AJOUTER</button>
@@ -70,6 +74,7 @@ const direction = screen.width < 500 ? 'vertical' : 'horizontal'
 const insert_form = reactive({
     name: '',
     description: '',
+    color: ''
 })
 
 
