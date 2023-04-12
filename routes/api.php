@@ -38,4 +38,5 @@ Route::post('/todolist/insert', [TodolistController::class, 'create']);
 Route::get('/todolist/{id}/todos', [TodoController::class, 'list_todos']);
 Route::delete('/todolist/{todolist_id}/todos/{todo_id}', [TodoController::class, 'delete']);
 Route::post('/todolists/{todolist_id}/todos/insert', [TodoController::class, 'create']);
+Route::patch('/todolists/{todolist_id}/todos/{todo_id}/update', [TodoController::class, 'update']);
 Route::post('/todolists/{todolist_id}/todos/{todo_id}/switch', [TodoController::class, 'switch']);
