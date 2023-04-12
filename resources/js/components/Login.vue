@@ -1,15 +1,24 @@
 <template>
-  <form @submit.prevent="submit">
-    <div>
-      <label for="email">Email</label>
-      <input id="email" v-model="form.email" type="email" required>
+  <div id="login-page">
+    <h1 id="title" class="text-center">Student Helper</h1>
+
+    <div id="subtitle">
+      <h2>Connexion</h2>
+      <router-link to="/register" id="createaccount-link">Créer un compte</router-link>
     </div>
-    <div>
-      <label for="password">Mot de passe</label>
-      <input id="password" v-model="form.password" type="password" required>
-    </div>
-    <button type="submit">Login</button>
-  </form>
+    
+    <form @submit.prevent="submit">
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input id="email" v-model="form.email" type="email" required placeholder="xyz@abc.com">
+      </div>
+      <div class="input-container">
+        <label for="password">Mot de passe</label>
+        <input id="password" v-model="form.password" type="password" required placeholder="******">
+      </div>
+      <button type="submit" id="login-submit">CONNEXION</button>
+    </form>
+  </div>
 </template>
 
 <script setup>

@@ -1,12 +1,22 @@
 <template>
   <div id="home-page">
-    <h1>Student Helper !</h1>
-    <p>Student Helper est une application web qui permet aux étudiants de gérer leurs tâches quotidiennes, programmer les deadlines importantes, ou encore calculer leur moyenne</p>
+    <h1 class="text-center">Student Helper</h1>
+    <p class="text-center">Student Helper est une application web qui permet aux étudiants de gérer leurs tâches quotidiennes, programmer les deadlines importantes, ou encore calculer leur moyenne</p>
     <button @click="submit_logout()">logout</button>
+    
+    <div id="programs">
+      <div id="card1" class="card">
+        <router-link to="/todolists">Mes TodoLists</router-link>
+      </div>
+
+      <div id="card2" class="card">
+        <router-link to="/timeline">Ma timeline</router-link>
+      </div>
+      <div id="card3" class="card">
+        <router-link to="/mean">Calculateur de moyenne</router-link>
+      </div>  
+    </div>
     <div id="home-nav">
-      <router-link to="/todolists">Mes TodoLists</router-link>
-      <router-link to="/timeline">Ma timeline</router-link>
-      <router-link to="/mean">Calculateur de moyenne</router-link>
     </div>
   </div>
 </template>
