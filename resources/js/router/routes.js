@@ -21,7 +21,7 @@ export const routes = [
     name: 'Register',
     component: Register,
     meta: {
-      title: 'Register',
+      title: 'Inscription',
       middleware: "guest"
     }
   },
@@ -30,7 +30,7 @@ export const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'Home',
+      title: 'Accueil',
       middleware: "auth"
     }
   },
@@ -48,7 +48,7 @@ export const routes = [
     name: 'Calculateur de moyenne',
     component: MeanCalculator,
     meta: { 
-      title: 'MeanCalculator',
+      title: 'Calculateur de moyenne',
       middleware: "auth"
     }
   },

@@ -3,7 +3,7 @@ import { nextTick } from 'vue'
 import { routes } from './routes.js'
 import store from '../store'
 
-const PROJECT_NAME = 'TimeLine Personelle'
+const PROJECT_NAME = 'Student Helper'
 export const router = createRouter({
     history: createWebHistory(),
     routes,
