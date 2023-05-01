@@ -60,6 +60,36 @@ class TodoController extends Controller
         );
     }
 
+    public function update($todolist_id, $todo_id, Request $request) {
+        $todo = Todo::find($todo_id);
+
+        if ($request->title) {
+            $todo->title = $request->title;
+        }
+
+        if ($request->priority) {
+            $todo->priority = $request->priority;
+        }
+
+        if ($request->description) {
+            $todo->description = $request->description;
+        }
+
+        if ($request->deadline) {
+            $todo->deadline = $request->deadline;
+        }
+
+        $todo->save();
+
+        return response()->json(
+            [
+                'message' => 'Tâche ajoutée avec succès.',
+                'todolist' => new TodolistResource(Todolist::find($todolist_id))
+                
+            ], 200
+        );
+    }
+
     public function switch($todolist_id, $todo_id) {
         $todo = Todo::find($todo_id);
         $todo->done = !$todo->done;

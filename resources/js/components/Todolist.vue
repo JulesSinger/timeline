@@ -1,10 +1,10 @@
 <template>
   <div id="todolist-page" v-if="todolist">
-    <div id="header" class="mt-1" @click="closeCreateForm() & closeUpdateForm()">
+    <div id="header" class="mt-1">
       <router-link :to="{name: 'Todolists'}" class="router">
         <img src="/images/left_direction.svg"  alt="back" class="icon"/>
       </router-link>
-      <h2 class="text-center">{{ todolist.name }}</h2>
+      <h2 style="width: 100%;" class="text-center" @click="closeCreateForm() & closeUpdateForm()">{{ todolist.name }}</h2>
       <p class="hidden">s</p>
     </div>
     <div id="todos-container">
@@ -12,7 +12,7 @@
         <div v-if="!todo.done" class="todo">
           <div class="flex fullpr">
             <input type="radio" @click="callSwitchTodo(todo.id)" :checked="todo.done" class="checkbox" >
-            <div class="flex fullpr" @click="displayUpdateForm()">
+            <div class="flex fullpr" @click="displayUpdateForm(todo)">
     
               <div class="todo-title" >
                 <h3>{{ todo.title }}</h3>
@@ -140,6 +140,7 @@ const direction = screen.width < 500 ? 'vertical' : 'horizontal'
 
 const route = useRoute()
 const todolist_id = route.params.id
+
 const insert_form = reactive({
   title: '',
   description: '',
@@ -168,7 +169,6 @@ const displayCreateForm = () => {
 }
 
 const displayUpdateForm = (todo) => {
-  console.log("update enter")
   update_todo.value = todo
   const todo_update = document.getElementById('edit-todo')
   todo_update.classList.remove('hidden')
@@ -202,7 +202,7 @@ const callPostTodo = () => {
 }
 
 const callUpdateTodo = () => {
-  updateTodo(update_form)
+  updateTodo(update_form, update_todo.value.id)
   closeUpdateForm()
 }
 
