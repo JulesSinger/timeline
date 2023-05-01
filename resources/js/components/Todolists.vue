@@ -28,7 +28,7 @@
             <router-link :to="{name: 'Todolist', params: { id: todolist.id }}" class="router">
                 <img src="/images/eye.png"  alt="delete" class="icon"/>
             </router-link>
-            <img src="/images/edit.png" @click="editTodolist(todolist)" />
+            <img src="/images/edit.png" @click="displayUpdateForm(todolist)" />
             <img src="/images/delete.svg"  @click="callDeleteTodolist(todolist.id)" alt="delete" class="icon"/>
           </div>
       </div>
@@ -55,20 +55,54 @@
           <input type="text" id="description" v-model="insert_form.description" placeholder="description de la todolist"/>
         </div>
 
-        <div class="input-container">
-          <input type="text" id="color" v-model="insert_form.color" placeholder="Couleur"/>
+        <div class="flex" id="colors-container">
+          <div class="color" id="blue" @click="setColor('insert', 'blue')">&nbsp;</div>
+          <div class="color" id="red" @click="setColor('insert', 'red')">&nbsp;</div>
+          <div class="color" id="green" @click="setColor('insert', 'green')">&nbsp;</div>
+          <div class="color" id="yellow" @click="setColor('insert', 'yellow')">&nbsp;</div>
+          <div class="color" id="grey" @click="setColor('insert', 'grey')">&nbsp;</div>
+
         </div>
       </div>
 
       <button class="btn btn-markup" @click="callPostTodolist()">AJOUTER</button>
+    </div>
+
+    <div id="edit-todolist" class="hidden">
+      <div id="close">
+        <div @click="closeUpdateForm()">
+          <img src="/images/close.png" alt="fermer" >
+        </div>
+      </div>
+
+      <div id="inputs">
+        <div class="input-container">
+          <input type="text" id="name" v-model="update_form.name" placeholder="nom de la todolist"/>
+        </div>
+
+        <div class="input-container">
+          <input type="text" id="description" v-model="update_form.description" placeholder="description de la todolist"/>
+        </div>
+
+        <div class="flex" id="colors-container">
+          <div class="color" id="blue" @click="setColor('update', 'blue')">&nbsp;</div>
+          <div class="color" id="red" @click="setColor('update', 'red')">&nbsp;</div>
+          <div class="color" id="green" @click="setColor('update', 'green')">&nbsp;</div>
+          <div class="color" id="yellow" @click="setColor('update', 'yellow')">&nbsp;</div>
+          <div class="color" id="grey" @click="setColor('update', 'grey')">&nbsp;</div>
+
+        </div>
+      </div>
+
+      <button class="btn btn-markup" @click="callEditTodolist()">AJOUTER</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useTodolist } from '../api/todolist.js'
-import { reactive } from 'vue'
-const { todolists, getTodolists, deleteTodolist, postTodolist } = useTodolist()
+import { reactive, ref } from 'vue'
+const { todolists, getTodolists, deleteTodolist, postTodolist, updateTodolist } = useTodolist()
 const direction = screen.width < 500 ? 'vertical' : 'horizontal'
 
 const insert_form = reactive({
@@ -77,6 +111,22 @@ const insert_form = reactive({
     color: ''
 })
 
+const update_form = reactive({
+    name: '',
+    description: '',
+    color: ''
+})
+
+const update_todolist = ref(null)
+
+const setColor = (formType, color) => {
+  if(formType == 'insert') {
+    insert_form.color = color
+  }
+  else if(formType == 'update') {
+    update_form.color = color
+  }
+}
 
 const displayCreateForm = () => {
   const todolist_create = document.getElementById('create-todolist')
@@ -87,9 +137,28 @@ const displayCreateForm = () => {
   }
 }
 
+const displayUpdateForm = (todolist) => {
+  update_todolist.value = todolist
+  const todolist_update = document.getElementById('edit-todolist')
+  todolist_update.classList.remove('hidden')
+  if (direction == 'vertical') {
+    const page = document.getElementById('todolists-page')
+    page.classList.add('black-filter')
+  }
+}
+
 const closeCreateForm = () => {
   const todolist_create = document.getElementById('create-todolist')
   todolist_create.classList.add('hidden')
+  if (direction == 'vertical') {
+    const page = document.getElementById('todolists-page')
+    page.classList.remove('black-filter')
+  }
+}
+
+const closeUpdateForm = () => {
+  const todolist_update = document.getElementById('edit-todolist')
+  todolist_update.classList.add('hidden')
   if (direction == 'vertical') {
     const page = document.getElementById('todolists-page')
     page.classList.remove('black-filter')
@@ -106,8 +175,10 @@ const callPostTodolist = () => {
   closeCreateForm()
 }
 
-const editTodolist = (todolist) => {
-  console.log(todolist.id)
+
+const callEditTodolist = () => {
+  updateTodolist(update_form, update_todolist.value.id)
+  closeUpdateForm()
 }
 
 getTodolists()

@@ -36,6 +36,34 @@ class TodolistController extends Controller
         );
     }
 
+    public function update($todolist_id, Request $request) {
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $todolist = Todolist::find($todolist_id);
+
+        if ($request->name) {
+            $todolist->name = $request->name;
+        }
+
+        if ($request->description) {
+            $todolist->description = $request->description;
+        }
+
+        if ($request->color) {
+            $todolist->color = $request->color;
+        }
+
+        $todolist->save();
+
+        return response()->json(
+            [
+                'message' => 'Todolist modifiée avec succès.',
+                'todolists' => TodolistResource::collection(Todolist::where('user_id', $user_id)->get())
+            ], 200
+        );
+    }
+
     public function create(Request $request) {
         $requestData = $request->all();
 
