@@ -1,6 +1,12 @@
 <template>
   <div id="todolists-page" v-if="todolists">
-    <h2 class="text-center mb-5 mt-2" @click="closeCreateForm()">Mes listes</h2>
+    <div class="header mt-1">
+      <router-link :to="{name: 'Home'}" class="router">
+        <img src="/images/left_direction.svg"  alt="back" class="icon"/>
+      </router-link>
+      <h2 style="width: 100%;" class="text-center" @click="closeCreateForm() & closeUpdateForm()">Mes listes</h2>
+      <p class="hidden">s</p>
+    </div>
 
     <div id="todolists-container">
       <div class="todolist undisplayed">

@@ -1,8 +1,15 @@
 <template>
   <div id="home-page">
-    <h1 class="text-center">Student Helper</h1>
-    <p class="text-center">Student Helper est une application web qui permet aux étudiants de gérer leurs tâches quotidiennes, programmer les deadlines importantes, ou encore calculer leur moyenne</p>
-    <button @click="submit_logout()">logout</button>
+    <div id="top-bar">
+      <p class="hidden">s</p>
+      <h2 class="text-center">Student Helper</h2>
+      <div>
+        <img @click="submit_logout()" src="/images/logout.png" alt="">
+        <img @click="" src="/images/user.png" alt="">
+      </div>
+    </div>
+
+    <p class="text-center p-1">Student Helper est une application web qui permet aux étudiants de gérer leurs tâches quotidiennes, programmer les deadlines importantes, ou encore calculer leur moyenne</p>
     
     <div id="programs">
       <div id="card1" class="card">

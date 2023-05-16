@@ -157,12 +157,13 @@
           position: fixed;
           top: 0;
           z-index: 100;
+          margin-top: 0!important;
         }
       }
 
       #timeline-update {
         & {
-          top: 50%!important;
+          top: 48%!important;
         }
       }
     }

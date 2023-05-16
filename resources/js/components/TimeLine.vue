@@ -1,6 +1,12 @@
 <template>
   <div id="timeline-page">
-    <button v-if="direction=='vertical'" class="btn btn-markup block m-auto mt-2 mb-2" @click="displayCreateForm()">Créer un item</button>
+    <div class="header mt-1">
+      <router-link :to="{name: 'Home'}" class="router">
+        <img src="/images/left_direction.svg"  alt="back" class="icon"/>
+      </router-link>
+      <button v-if="direction=='vertical'" class="btn btn-markup block m-auto mt-2 mb-2" @click="displayCreateForm()">Créer un item</button>
+      <p class="hidden">s</p>
+    </div>
     <v-timeline id="timeline" :direction=direction  class="container">
       <v-timeline-item v-for="d in timeline_items" :key="d" :dot-color="d.dot" small>
         <template v-slot:opposite>

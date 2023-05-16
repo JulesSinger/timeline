@@ -1,6 +1,6 @@
 <template>
   <div id="todolist-page" v-if="todolist">
-    <div id="header" class="mt-1">
+    <div class="header mt-1">
       <router-link :to="{name: 'Todolists'}" class="router">
         <img src="/images/left_direction.svg"  alt="back" class="icon"/>
       </router-link>
@@ -13,7 +13,6 @@
           <div class="flex fullpr">
             <input type="radio" @click="callSwitchTodo(todo.id)" :checked="todo.done" class="checkbox" >
             <div class="flex fullpr" @click="displayUpdateForm(todo)">
-    
               <div class="todo-title" >
                 <h3>{{ todo.title }}</h3>
               </div>
@@ -31,7 +30,6 @@
               <h3>!!!</h3>
             </div>
           </div>
-
         </div>
       </div>
 
